@@ -1068,7 +1068,7 @@
           },
           {
             "position": {
-              "x": -545.0000000000007,
+              "x": -340.0000000000007,
               "y": 1200
             },
             "size": {
@@ -1620,10 +1620,9 @@
             "labels": [
               "Отправка платежа на обработку\nОбратно: статус выполнения платежа"
             ],
-            "id": "b555c256-52d4-46ba-a2f1-e10ecb85eaae",
+            "id": "a47a0895-ce6d-417b-9675-3c455a5772bf",
             "source": {
-              "x": -580,
-              "y": 710
+              "cell": "48fc3a97-9de7-4c7e-b8ad-273e83a2fce8"
             },
             "target": {
               "cell": "e190c6c0-68ab-40f7-a70c-75b194d9187e",
@@ -1631,141 +1630,109 @@
             },
             "vertices": [
               {
-                "x": -520,
-                "y": 650
-              },
-              {
-                "x": -500,
-                "y": 650
-              },
-              {
-                "x": -460,
-                "y": 610
+                "x": -480,
+                "y": 640
               }
             ]
           },
           {
-            "position": {
-              "x": -830,
-              "y": 1220
-            },
-            "size": {
-              "width": 150,
-              "height": 70
-            },
+            "shape": "flow",
             "attrs": {
-              "text": {
-                "text": "Scanned Orders"
-              },
-              "topLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              },
-              "bottomLine": {
-                "strokeWidth": 1.5,
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
                 "strokeDasharray": null
               }
             },
-            "visible": true,
-            "shape": "store",
-            "zIndex": 11,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "28b60d21-a9bc-4a13-9b6e-87fc49812f98"
-                },
-                {
-                  "group": "right",
-                  "id": "d799d141-4b6c-4dfe-b717-1b3da5195897"
-                },
-                {
-                  "group": "bottom",
-                  "id": "31815991-733a-4361-bb4a-40e8ebbfb748"
-                },
-                {
-                  "group": "left",
-                  "id": "d4db1e5b-6184-4d22-a276-9b43cadd2cc6"
-                }
-              ]
-            },
-            "id": "e2d78c0e-62b4-4cda-9133-bbd3b8a87355",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
             "data": {
-              "type": "tm.Store",
-              "name": "Scanned Orders",
-              "description": "Сканы платежных поручений",
+              "type": "tm.Flow",
+              "name": "Отправка платежа на обработку\nОбратно: статус выполнения платежа",
+              "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
-              "isALog": false,
+              "isBidirectional": false,
               "isEncrypted": false,
-              "isSigned": false,
-              "storesCredentials": false,
-              "storesInventory": false,
+              "isPublicNetwork": false,
+              "protocol": "",
               "threats": []
-            }
+            },
+            "labels": [
+              "Отправка платежа на обработку\nОбратно: статус выполнения платежа"
+            ],
+            "id": "50945509-19bf-426c-bc7b-8da32c2ec711",
+            "source": {
+              "cell": "fbcb8cd5-9bf4-4070-8770-1d779e920134"
+            },
+            "target": {
+              "cell": "e190c6c0-68ab-40f7-a70c-75b194d9187e",
+              "port": "5c5e1e67-3b25-429a-879e-2f153a38b797"
+            },
+            "vertices": [
+              {
+                "x": -50,
+                "y": 630
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Платежные данные",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Платежные данные"
+            ],
+            "id": "357599ab-21c6-48f1-a645-e04243fccd24",
+            "source": {
+              "x": 140,
+              "y": 750
+            },
+            "target": {
+              "cell": "641037b7-dbc0-4a16-9cde-48c0aad30bbe",
+              "port": "d799d141-4b6c-4dfe-b717-1b3da5195897"
+            },
+            "vertices": [
+              {
+                "x": 270,
+                "y": 960
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -1861,8 +1828,8 @@
             ],
             "id": "b8b92d80-970e-4e01-ac41-e76d957b07a3",
             "source": {
-              "x": -350,
-              "y": 960
+              "cell": "c191cad3-30d3-458f-bad0-31111615fc9c",
+              "port": "8dc20c30-944c-47cd-8659-b9650bca409e"
             },
             "target": {
               "cell": "48fc3a97-9de7-4c7e-b8ad-273e83a2fce8",
