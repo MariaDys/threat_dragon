@@ -1,0 +1,27 @@
+{
+  "version": "2.4.1",
+  "summary": {
+    "title": "Online banking for legal entities",
+    "owner": "Maria",
+    "description": "Online banking for making payments between legal entities.\nOpportunities:\n- online payments (with a scan of the payment order, signed in the EDI),\n- batch payments (xlsx + orders),\n- verification of the validity of the signature and the correspondence of the details,\n- conducting internal transfers.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Internet bank STRIDE diagram",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.4.1",
+        "cells": [],
+        "description": "Internet bank STRIDE diagram"
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "Maria",
+    "threatTop": 0
+  }
+}
