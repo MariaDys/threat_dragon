@@ -33,8 +33,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "109af916-55ac-4cdd-acf9-3bee6a259ebd",
             "zIndex": -1,
+            "id": "109af916-55ac-4cdd-acf9-3bee6a259ebd",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "DMZ",
@@ -59,8 +59,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "b6499935-0737-47e0-a4cc-2cf58f0d11c0",
             "zIndex": -1,
+            "id": "b6499935-0737-47e0-a4cc-2cf58f0d11c0",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Внешняя сеть (интернет)",
@@ -71,12 +71,12 @@
           },
           {
             "position": {
-              "x": -920,
-              "y": 460
+              "x": 400,
+              "y": 450
             },
             "size": {
-              "width": 1080,
-              "height": 640
+              "width": 1130,
+              "height": 860
             },
             "attrs": {
               "label": {
@@ -85,8 +85,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "9c679bc2-9b8b-4d2d-8122-abd6adf23ffc",
             "zIndex": -1,
+            "id": "9c679bc2-9b8b-4d2d-8122-abd6adf23ffc",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Внутренний сегмент ",
@@ -97,8 +97,8 @@
           },
           {
             "position": {
-              "x": -150,
-              "y": 490
+              "x": -375.0000000000007,
+              "y": 510
             },
             "size": {
               "width": 220,
@@ -106,8 +106,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "22af1f75-5dff-446a-a414-49243946376d",
             "zIndex": -1,
+            "id": "22af1f75-5dff-446a-a414-49243946376d",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "",
@@ -137,6 +137,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -220,7 +221,6 @@
               ]
             },
             "id": "2ba39e6f-76a6-410d-a25c-e3918b064bcb",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "Клиент",
@@ -253,6 +253,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -336,7 +337,6 @@
               ]
             },
             "id": "1471c41a-9f45-4928-b107-a69bd94e9813",
-            "zIndex": 2,
             "data": {
               "type": "tm.Actor",
               "name": "Система ЭДО",
@@ -369,6 +369,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -452,7 +453,6 @@
               ]
             },
             "id": "59365fed-f022-42d1-b98a-e90c14275673",
-            "zIndex": 3,
             "data": {
               "type": "tm.Process",
               "name": "Banking Web App",
@@ -469,11 +469,11 @@
           },
           {
             "position": {
-              "x": -734,
-              "y": 530
+              "x": -724.0000000000002,
+              "y": 650
             },
             "size": {
-              "width": 160,
+              "width": 170,
               "height": 120
             },
             "attrs": {
@@ -488,6 +488,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -571,7 +572,6 @@
               ]
             },
             "id": "48fc3a97-9de7-4c7e-b8ad-273e83a2fce8",
-            "zIndex": 4,
             "data": {
               "type": "tm.Process",
               "name": "Payment \nHandler",
@@ -588,8 +588,8 @@
           },
           {
             "position": {
-              "x": -445.0000000000007,
-              "y": 530
+              "x": -10,
+              "y": 650
             },
             "size": {
               "width": 190,
@@ -607,6 +607,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 5,
             "ports": {
               "groups": {
                 "top": {
@@ -690,7 +691,6 @@
               ]
             },
             "id": "fbcb8cd5-9bf4-4070-8770-1d779e920134",
-            "zIndex": 5,
             "data": {
               "type": "tm.Process",
               "name": "Batch \nPayment \nHandler",
@@ -707,8 +707,8 @@
           },
           {
             "position": {
-              "x": -719,
-              "y": 810
+              "x": -350,
+              "y": 960
             },
             "size": {
               "width": 130,
@@ -726,6 +726,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 6,
             "ports": {
               "groups": {
                 "top": {
@@ -809,7 +810,6 @@
               ]
             },
             "id": "c191cad3-30d3-458f-bad0-31111615fc9c",
-            "zIndex": 6,
             "data": {
               "type": "tm.Process",
               "name": "Signature\n Validation",
@@ -826,8 +826,8 @@
           },
           {
             "position": {
-              "x": -90,
-              "y": 520
+              "x": -315.0000000000007,
+              "y": 540
             },
             "size": {
               "width": 100,
@@ -845,6 +845,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 7,
             "ports": {
               "groups": {
                 "top": {
@@ -928,7 +929,6 @@
               ]
             },
             "id": "e190c6c0-68ab-40f7-a70c-75b194d9187e",
-            "zIndex": 7,
             "data": {
               "type": "tm.Process",
               "name": "CBS",
@@ -945,8 +945,8 @@
           },
           {
             "position": {
-              "x": -280,
-              "y": 1010
+              "x": -1010,
+              "y": 1210
             },
             "size": {
               "width": 120,
@@ -967,6 +967,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 9,
             "ports": {
               "groups": {
                 "top": {
@@ -1050,7 +1051,6 @@
               ]
             },
             "id": "43bcaf69-b2e0-4b04-8a2c-ef59320f6673",
-            "zIndex": 9,
             "data": {
               "type": "tm.Store",
               "name": "Logs and audit",
@@ -1068,12 +1068,12 @@
           },
           {
             "position": {
-              "x": -699,
-              "y": 987
+              "x": -545.0000000000007,
+              "y": 1200
             },
             "size": {
-              "width": 140,
-              "height": 70
+              "width": 170,
+              "height": 90
             },
             "attrs": {
               "text": {
@@ -1090,6 +1090,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 10,
             "ports": {
               "groups": {
                 "top": {
@@ -1173,7 +1174,6 @@
               ]
             },
             "id": "641037b7-dbc0-4a16-9cde-48c0aad30bbe",
-            "zIndex": 10,
             "data": {
               "type": "tm.Store",
               "name": "Payment DB",
@@ -1209,7 +1209,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Создание платежа\nДанные: реквизиты, скан подписанного поручения",
+              "name": "Создание платежа/запрос данных о платеже\nДанные: реквизиты, скан подписанного поручения",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1221,7 +1221,7 @@
               "threats": []
             },
             "labels": [
-              "Создание платежа\nДанные: реквизиты, скан подписанного поручения"
+              "Создание платежа/запрос данных о платеже\nДанные: реквизиты, скан подписанного поручения"
             ],
             "id": "db473162-fe5e-49b5-9ada-b61decdb9508",
             "source": {
@@ -1369,8 +1369,8 @@
             ],
             "id": "003388f3-0550-4d95-ae3e-86e3661b048b",
             "source": {
-              "x": -630,
-              "y": 300
+              "cell": "59365fed-f022-42d1-b98a-e90c14275673",
+              "port": "efb5d4ac-c626-4c03-bdbe-56e831a970bf"
             },
             "target": {
               "cell": "48fc3a97-9de7-4c7e-b8ad-273e83a2fce8",
@@ -1378,8 +1378,8 @@
             },
             "vertices": [
               {
-                "x": -630,
-                "y": 410
+                "x": -620,
+                "y": 530
               }
             ]
           },
@@ -1403,7 +1403,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
+              "name": "Платежные данные",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1415,22 +1415,239 @@
               "threats": []
             },
             "labels": [
-              "Data Flow"
+              "Платежные данные"
             ],
-            "id": "fac5bc41-3081-4fd9-a2be-7a41b17c0b6a",
+            "id": "cc112400-6bce-4bd8-a310-d444390168f7",
             "source": {
+              "cell": "48fc3a97-9de7-4c7e-b8ad-273e83a2fce8"
+            },
+            "target": {
+              "cell": "641037b7-dbc0-4a16-9cde-48c0aad30bbe",
+              "port": "d4db1e5b-6184-4d22-a276-9b43cadd2cc6"
+            },
+            "vertices": [
+              {
+                "x": -910,
+                "y": 950
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Архив с формами платежа и сканами поручений",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Архив с формами платежа и сканами поручений"
+            ],
+            "id": "d36beaa4-5d8d-4a28-b9ae-4eeab201a658",
+            "source": {
+              "cell": "59365fed-f022-42d1-b98a-e90c14275673",
+              "port": "efb5d4ac-c626-4c03-bdbe-56e831a970bf"
+            },
+            "target": {
+              "cell": "fbcb8cd5-9bf4-4070-8770-1d779e920134",
+              "port": "ad78a8d6-ece0-40e1-b4ce-3fca192d05d5"
+            },
+            "vertices": [
+              {
+                "x": 20,
+                "y": 370
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Проверка подписи и сверка реквизитов\nДанные: скан платежного поручения",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Проверка подписи и сверка реквизитов\nДанные: скан платежного поручения"
+            ],
+            "id": "31abc71f-2025-40ef-8671-e3383aa046d6",
+            "source": {
+              "cell": "fbcb8cd5-9bf4-4070-8770-1d779e920134",
+              "port": "efb5d4ac-c626-4c03-bdbe-56e831a970bf"
+            },
+            "target": {
               "cell": "c191cad3-30d3-458f-bad0-31111615fc9c",
               "port": "5c5e1e67-3b25-429a-879e-2f153a38b797"
             },
+            "vertices": [
+              {
+                "x": 80,
+                "y": 900
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Статус проверки",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Статус проверки"
+            ],
+            "id": "617b0a7e-17dc-480f-8028-438ef213a2ca",
+            "source": {
+              "x": -220,
+              "y": 1020
+            },
             "target": {
-              "cell": "48fc3a97-9de7-4c7e-b8ad-273e83a2fce8",
+              "cell": "fbcb8cd5-9bf4-4070-8770-1d779e920134",
               "port": "efb5d4ac-c626-4c03-bdbe-56e831a970bf"
-            }
+            },
+            "vertices": [
+              {
+                "x": -180,
+                "y": 880
+              },
+              {
+                "x": -120,
+                "y": 820
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Отправка платежа на обработку\nОбратно: статус выполнения платежа",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Отправка платежа на обработку\nОбратно: статус выполнения платежа"
+            ],
+            "id": "b555c256-52d4-46ba-a2f1-e10ecb85eaae",
+            "source": {
+              "x": -580,
+              "y": 710
+            },
+            "target": {
+              "cell": "e190c6c0-68ab-40f7-a70c-75b194d9187e",
+              "port": "8dc20c30-944c-47cd-8659-b9650bca409e"
+            },
+            "vertices": [
+              {
+                "x": -520,
+                "y": 650
+              },
+              {
+                "x": -500,
+                "y": 650
+              },
+              {
+                "x": -460,
+                "y": 610
+              }
+            ]
           },
           {
             "position": {
-              "x": -505,
-              "y": 987
+              "x": -830,
+              "y": 1220
             },
             "size": {
               "width": 150,
@@ -1451,6 +1668,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 11,
             "ports": {
               "groups": {
                 "top": {
@@ -1534,7 +1752,6 @@
               ]
             },
             "id": "e2d78c0e-62b4-4cda-9133-bbd3b8a87355",
-            "zIndex": 11,
             "data": {
               "type": "tm.Store",
               "name": "Scanned Orders",
@@ -1570,7 +1787,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
+              "name": "Проверка подписи и сверка реквизитов\nДанные: скан платежного поручения",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -1582,7 +1799,7 @@
               "threats": []
             },
             "labels": [
-              "Data Flow"
+              "Проверка подписи и сверка реквизитов\nДанные: скан платежного поручения"
             ],
             "id": "ddbe1276-c8c0-49af-9f54-1ec4420ae8e2",
             "source": {
@@ -1595,195 +1812,72 @@
             },
             "vertices": [
               {
-                "x": -735,
-                "y": 680
+                "x": -690,
+                "y": 800
+              },
+              {
+                "x": -690,
+                "y": 860
+              },
+              {
+                "x": -590,
+                "y": 940
               }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 13,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Статус проверки",
+              "description": "Подпись валидна/не валидна",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Статус проверки"
             ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            "id": "b8b92d80-970e-4e01-ac41-e76d957b07a3",
+            "source": {
+              "x": -350,
+              "y": 960
+            },
+            "target": {
+              "cell": "48fc3a97-9de7-4c7e-b8ad-273e83a2fce8",
+              "port": "efb5d4ac-c626-4c03-bdbe-56e831a970bf"
+            },
+            "vertices": [
+              {
+                "x": -410,
+                "y": 840
+              },
+              {
+                "x": -560,
+                "y": 800
+              }
+            ]
           }
         ],
         "description": "Internet bank STRIDE diagram"
