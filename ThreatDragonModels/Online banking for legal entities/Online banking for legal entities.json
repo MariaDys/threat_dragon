@@ -71,8 +71,8 @@
           },
           {
             "position": {
-              "x": -1140.000000000002,
-              "y": 440.0000000000025
+              "x": -1140,
+              "y": 440
             },
             "size": {
               "width": 1440,
@@ -464,7 +464,15 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -870,7 +878,13 @@
             "target": {
               "cell": "59365fed-f022-42d1-b98a-e90c14275673",
               "port": "ad78a8d6-ece0-40e1-b4ce-3fca192d05d5"
-            }
+            },
+            "vertices": [
+              {
+                "x": -650,
+                "y": 50
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -976,7 +990,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -996,12 +1011,31 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "44295624-4b8a-4867-a0dc-4fe72e0a7f46",
+                  "title": "Угроза утечки данных",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "При использовании небезопасных протоколов передачи информации возможна утечка",
+                  "mitigation": "Требования:\n1. ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Запрос + данные"
@@ -1014,7 +1048,13 @@
             "target": {
               "cell": "48746edf-5f59-4c41-8064-2a9175636b03",
               "port": "20ad7dec-6763-4849-af93-9ce8b7a3f86e"
-            }
+            },
+            "vertices": [
+              {
+                "x": -626,
+                "y": 410
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -1826,8 +1866,8 @@
           },
           {
             "position": {
-              "x": -1100.0000000000007,
-              "y": 760
+              "x": -1110,
+              "y": 735
             },
             "size": {
               "width": 140,
@@ -2120,8 +2160,8 @@
                 "text": "Signature\nValidation"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2217,12 +2257,34 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "cdc83ff9-638f-493b-b239-a846dbaabd19",
+                  "title": "Устарешие алгоритмы шифрования",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Небезопасные алгоритмы шифрования\nCWE-327: Use of a Broken or Risky Cryptographic Algorithm",
+                  "mitigation": "Требования:\n1. Использование последних версий алгоритмов хэширования (SHA-256)\n2. Не хардкодить ключи шифрования, не хранить их в открытом виде где-либо кроме файла конфигурации",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -2283,11 +2345,13 @@
                 "text": "Payment DB"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2383,13 +2447,53 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "3214673d-3d72-4e83-9d0b-cab6eecbc79c",
+                  "title": "Выход из строя БД",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "CWE-400: Uncontrolled Resource Consumption\n(При большом числе запросов к БД, возможна угроза выхода из строя БД (отказ в доступе))\n",
+                  "mitigation": "Требования:\n1. Создание реплики БД\n2. Ограничения на число запросов",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "506d9ff0-6f0e-4bbf-8768-b1260d481ca3",
+                  "title": "[P] Отстутствие шифрования данных при хранении",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "CWE-312: Cleartext Storage of Sensitive Information\n(The product stores sensitive information in cleartext within a resource that might be accessible to another control sphere)",
+                  "mitigation": "1. Использовать \"сильные\" механизмы шифрования (AES-256), исключить использование пользовательских/частных алгоритмов для хранимых данных в БД.\n2. Надежное хранение ключей (отдельно от БД).\n3. ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 4,
+                "denialOfService": 2
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           }
         ],
@@ -2398,6 +2502,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Maria",
-    "threatTop": 0
+    "threatTop": 5
   }
 }
