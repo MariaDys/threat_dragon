@@ -234,7 +234,7 @@
           },
           {
             "position": {
-              "x": -385.0000000000007,
+              "x": -364.0000000000002,
               "y": -135
             },
             "size": {
@@ -840,7 +840,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -860,12 +861,57 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "ce94c6a9-56e1-41e8-b8db-f1c2a3101386",
+                  "title": "[1] Возможность перехвата платежных данных",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "CWE-345: Insufficient Verification of Data Authenticity\nВозможность перехвата злоумшленником реквизитов платежа или скана с возможностью изменить эти данные.\n",
+                  "mitigation": "13.3.2 ASVS\n[1] Тело сообщения подписывается с помощью WS-Security, чтобы обеспечить безопасную передачу между клиентом и сервисом\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                },
+                {
+                  "id": "73499dab-6099-424f-8c3d-8426019c02e3",
+                  "title": "[1] Угроза MiTM атаки",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "CWE-319: Cleartext Transmission of Sensitive Information\nУгроза MiTM атаки (перехват реквизитов платежей и сканов поручений)\n",
+                  "mitigation": "8.3.1 ASVS\n[1] В параметрах HTTP-запроса не содержится конфиденциальных данных. Вместо этого они отправляются на сервер в теле или заголовках HTTP-сообщения.\nНеобходимо шифровать данные при передаче (HTTPS)\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
+                },
+                {
+                  "id": "ae9ca424-dba7-4d4f-a853-61f594a7f793",
+                  "title": "[1] Устаревший протокол TLS",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "CWE-326: Inadequate Encryption Strength\nПерехват сессионных данных или данных платежа при использовании устаревшей версии протокола TLS.\nMiTM\n",
+                  "mitigation": "9.1.3 ASVS\n[1] Использование только актуальных версий TLS протокола (TLS 1.2 и TLS 1.3)\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 4,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Создание платежа/запрос данных о платеже\nДанные: реквизиты, скан подписанного поручения"
@@ -890,12 +936,13 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": ""
+                  "name": "block"
                 },
                 "strokeDasharray": null
               }
@@ -906,19 +953,51 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Платежное поручение",
+              "name": "Платежное поручение\nОбратно: подписанное поручение",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
+              "hasOpenThreats": true,
+              "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "3f4db22f-96fa-4fdc-886c-af1392926280",
+                  "title": "[1][1] Ошибки в проверке сертификата  ",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "CWE-295: Improper Certificate Validation\nФальшивый сертификат ЭДО, клиент примет подделку, если не проверяет цепочку доверия\nБез mTLS внутри сети злоумышленник может перехватить запросы на выполнение платежа, идущие к CBS\n",
+                  "mitigation": "1.9.2 ASVS\n[1] Компоненты приложения должны аутентифицировать каждую сторону\nвзаимодействия, чтобы предотвратить mitm атаки.\nНапример, компоненты должны проверять сертификаты и цепочки доверия TLS.\n\n9.2.1 ASVS\n[1] Для подключения к и от сервера используются доверенные сертификаты TLS. Сервер должен быть настроен так, чтобы доверять только утвержденным внутренним центрам сертификации. Все остальные должны отвергаться.\nТакже конфиденциальные данные, закрытые ключи и\nсертификаты должны безопасно храниться в Secure Element, TPM, TEE (Trusted\nExecution Environment) или быть защищены с помощью стойкой криптографии.\n\n\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
+                },
+                {
+                  "id": "bf93927b-7dbe-4518-bd67-053b9229c7ea",
+                  "title": "[2] Отстутствие аутентификации обеих сторон",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "CWE-295: Improper Certificate Validation\nФальшивый сертификат ЭДО, клиент примет подделку, если не проверяет цепочку доверия\nБез mTLS внутри сети злоумышленник может перехватить запросы на выполнение платежа, идущие к CBS\n",
+                  "mitigation": "1.9.2\n[2] Аутентификация обеих сторон",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 4,
+                "denialOfService": 0
+              }
             },
             "labels": [
-              "Платежное поручение"
+              "Платежное поручение\nОбратно: подписанное поручение"
             ],
             "id": "4fab8787-c70b-44f3-a3dd-818ad62cbe45",
             "source": {
@@ -931,58 +1010,12 @@
             },
             "vertices": [
               {
-                "x": -490,
+                "x": -480,
                 "y": -150
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Подписанное поручение",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Подписанное поручение"
-            ],
-            "id": "a93d682b-a649-44a0-99a6-fc11099c3dac",
-            "source": {
-              "cell": "1471c41a-9f45-4928-b107-a69bd94e9813",
-              "port": "25c4cb37-6f11-41bd-839d-47e104bc94b7"
-            },
-            "target": {
-              "cell": "2ba39e6f-76a6-410d-a25c-e3918b064bcb",
-              "port": "814da67d-d79f-42a9-acd7-4948bb5e3568"
-            },
-            "vertices": [
+              },
               {
-                "x": -490,
-                "y": -40
+                "x": -420,
+                "y": -120
               }
             ]
           },
@@ -990,7 +1023,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1010,15 +1044,29 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "77e37f58-f7ec-4277-a50f-1362eb981fd2",
+                  "title": "[1] Отсутствие шифрования передаваемых данных",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "CWE-319: Cleartext Transmission of Sensitive Information\nЗлоумышленник перехватывает платежные данные идущие от клиента к API Gateway\n",
+                  "mitigation": "2.2.5 ASVS\n[1] Использование протокола mTLS с взаимной аутентификацией\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                }
+              ],
               "threatFrequency": {
                 "tampering": 0,
-                "informationDisclosure": 0,
+                "informationDisclosure": 2,
                 "denialOfService": 0
               }
             },
@@ -1195,7 +1243,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1215,12 +1264,31 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "ee3a4d1d-83f2-4985-8759-f65e76bd84fc",
+                  "title": "[1][1] Отсутствие проверки цепочки доверия сертификаторов и подлинности сертификатов",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "CWE-295: Improper Certificate Validation\nФальшивый сертификат ЭДО, клиент примет подделку, если не проверяет цепочку доверия\nБез mTLS внутри сети злоумышленник может перехватить запросы на выполнение платежа, идущие к CBS\n",
+                  "mitigation": "1.9.2 ASVS\n[1] Компоненты приложения должны аутентифицировать каждую сторону\nвзаимодействия, чтобы предотвратить mitm атаки.\nНапример, компоненты должны проверять сертификаты и цепочки доверия TLS.\n\n9.2.1 ASVS\n[1] Для подключения к и от сервера используются доверенные сертификаты TLS. Сервер должен быть настроен так, чтобы доверять только утвержденным внутренним центрам сертификации. Все остальные должны отвергаться.\nТакже конфиденциальные данные, закрытые ключи и\nсертификаты должны безопасно храниться в Secure Element, TPM, TEE (Trusted\nExecution Environment) или быть защищены с помощью стойкой криптографии.\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "3.a Отправка платежана обработку\nОбратно: статус выполнения"
@@ -1527,7 +1595,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1547,12 +1616,31 @@
               "description": "Данные платежа (запись и чтение)",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "4b8fa735-7f30-4113-961a-400318005c72",
+                  "title": "[1] Угроза SQL-инъекции",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "+Tampering\nCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')\nВнедрение SQL-инъекции через поля платежного поручения, что может привести к утечке/повреждению хранимых данных.\n",
+                  "mitigation": "5.3.5\n[1] Экранирование SQL \n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 19,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               ""
@@ -1565,13 +1653,24 @@
             "target": {
               "cell": "7d330732-e00a-4f00-a09a-264b07404b20",
               "port": "7e99e1b6-23d5-4e08-b2f5-1e3809dccb5e"
-            }
+            },
+            "vertices": [
+              {
+                "x": -780,
+                "y": 920
+              },
+              {
+                "x": -660,
+                "y": 970
+              }
+            ]
           },
           {
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1591,12 +1690,31 @@
               "description": "Данные платежа (запись чтение)\n",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "3951f447-c48e-4a23-a9dd-381d477dc04c",
+                  "title": "[1] Угроза SQL-инъекции",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "+Tampering\nCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')\nВнедрение SQL-инъекции через поля платежного поручения, что может привести к утечке/повреждению хранимых данных.\n",
+                  "mitigation": "5.3.5\n[1] Экранирование SQL \n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               ""
@@ -1609,6 +1727,70 @@
             "target": {
               "cell": "7d330732-e00a-4f00-a09a-264b07404b20",
               "port": "e8de5c9e-c53f-4594-bbec-7765bb16c675"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "f453e49c-0d5b-4735-a5da-cdccb3b9bf11",
+                  "title": "[1] Угроза SQL-инъекции",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "+Tampering\nCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')\nВнедрение SQL-инъекции через поля платежного поручения, что может привести к утечке/повреждению хранимых данных.\n",
+                  "mitigation": "5.3.5\n[1] Экранирование SQL \n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              ""
+            ],
+            "id": "361fb5b2-ae0a-4558-a806-24f14da6341e",
+            "source": {
+              "x": -435,
+              "y": 845
+            },
+            "target": {
+              "cell": "7d330732-e00a-4f00-a09a-264b07404b20",
+              "port": "84b21b31-8be0-48eb-9512-ec49470615c9"
             }
           },
           {
@@ -1625,8 +1807,8 @@
                 "text": "Logging Service"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1722,12 +1904,95 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "89f06a11-d4fc-4142-92a2-0993f9187687",
+                  "title": "[2] Размещение конфиденциальных данных в логах",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "CWE-532: Insertion of Sensitive Information into Log File\nВозможность утечки конфиденциальных данных о совершаемых юридическим лицом платежах.\n",
+                  "mitigation": "7.1.1\n[2] В журнал не должны записываться учетные или платежные данные. Сессионные токены могут записываться в журнал только в необратимой хэшированной форме\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 28,
+                  "score": ""
+                },
+                {
+                  "id": "6b364543-168b-4e22-8e16-28a8d729e79b",
+                  "title": "[3] Угроза фальсификации событий в журнале",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "CWE-269: Improper Privilege Management\nФальсификация событий в журнале: изменение статуса платежей, сокрытие совершенных действий.\n",
+                  "mitigation": "7.3.3 ASVS\n[3] Журналы событий безопасности должы быть защищены от несанкционированного доступа и изменения.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 29,
+                  "score": ""
+                },
+                {
+                  "id": "a5f89370-4899-40a9-8039-75a3d3d4acf9",
+                  "title": "[3] Недостаточная нейтрализация данных, попадающих в журнал",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "+Information Disclosure\nCWE-117: Improper Output Neutralization for Logs\nЗлоумышленник может изменить статус совершения платежа, кроме того при отправке данных (данные платежа + файл скана поручения) возможно внедрение sql-инъекции, что может привести к XSS при наличии веб-интерфейса у системы логирования.\n\n",
+                  "mitigation": "7.3.1 ASVS\n[3] Записи событий в журнал с использованием экранирования для предотвращения инъекции.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 30,
+                  "score": ""
+                },
+                {
+                  "id": "757b6d8d-54cf-402f-b10a-b95736ea9b5a",
+                  "title": "[3] Не логируются события аутентификации, получения доступа, прохождения контроля поступающих данных",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "CWE-778: Insufficient Logging\nПри отсутствии логирования данных событий невозможно будет доказать попытки подобора brute force -> невозможно отследить атаку, либо доказать причастсность сотрудника к просмотру или модификации платежных данных, например. \n",
+                  "mitigation": "7.1.3 ASVS\n[3] Регистрация событий успешной/неуспешной аутентификации, нарушения контроля доступа, десериализации и форматно-логического контроля входных данных.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 31,
+                  "score": ""
+                },
+                {
+                  "id": "53dc2b1e-3632-4b08-bb5c-b9e31ace27e0",
+                  "title": "[3] Логи содержат избыточную информацию",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "CWE-778: Insufficient Logging\nЕсли злоумышленник совершил платеж от лица компании, но в логи не поступает информация о выполняемых операциях, времени выполнения, идентификаторах пользователей, то при расследовании будет невозомжно доказать вину.\n",
+                  "mitigation": "7.1.4 ASVS\n[3] События журнала включают минимально необходимую и достаточную информацию, которая позволит провести его подробное исследование с учетом хронологических связей.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 32,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 1,
+                "repudiation": 3,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -1863,8 +2128,8 @@
                 "text": "Auth"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1960,12 +2225,73 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "e3ca47f4-48aa-4801-a21b-d4f41a0a1aad",
+                  "title": "[1] Слабая аутентификация ",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "CWE-287: Improper Authentication\nПри слабой аутентификации злоумышленник может выдать себя за пользователя и отправить платеж от лица компании/ посмотреть информацию о платежах компании\n",
+                  "mitigation": "2.7.1 ASVS\n[1] По умолчанию не предлагается передавать второй фактор аутентификации открытым текстом через SMS или ТСОП. Сначала предлагаются более безопасные альтернативы, например, push-уведомления.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                },
+                {
+                  "id": "fd6054b4-35ab-4b65-bf63-59883864d521",
+                  "title": "[1] Возможность перебора",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "CWE-307: Improper Restriction of Excessive Authentication Attempts\nЗлоумышленник может выполнить произвольное кол-во попыток аутентификации с использованием разных паролей и в итоге получить доступ к целевой учетной записи с помощью brute force атаки.\n",
+                  "mitigation": "2.2.1 ASVS\n[1] Механизмы защиты от атак методом перебора и блокирования учетных записей. А именно:\n- запрет выбора наиболее распространенных скомпрометированных паролей,\n- временную блокировку учетной записи,\n- ограничение частоты запросов,\n- CAPTCHA,\n- увеличивающиеся интервалы между попытками,\n- ограничение списка допустимых IP-адресов\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                },
+                {
+                  "id": "810bf1d7-0f10-44c6-897c-83d2efa25a67",
+                  "title": "[2] Не обновляется срок действия запроса аутентификации",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "CWE-287: Improper Authentication\nПри слабой аутентификации злоумышленник может выдать себя за пользователя и отправить платеж от лица компании/ посмотреть информацию о платежах компании\n",
+                  "mitigation": "2.7.2 ASVS\n[2] Срок действия запросов аутентификации истекает не\nпозже, чем через 10 минут\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                },
+                {
+                  "id": "74f700ad-cd28-4ac7-926a-8e8aada056ff",
+                  "title": "[3] Повторное использование кода аутентификации",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "CWE-287: Improper Authentication\nВозможность несколько раз использовать одни и те же коды аутентификации.\n",
+                  "mitigation": "2.7.3 ASVS\n[3] Коды аутентификации можно использовать только один раз и только для исходного запроса аутентификации.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 12,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -1982,8 +2308,8 @@
                 "text": "CBS"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2079,19 +2405,42 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "7e249068-ef57-4eb3-8aac-1e7ff90a57c2",
+                  "title": "[2] Отсутствие аутентификации для доступа к критичной системе",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "CWE-306: Missing Authentication for Critical Function\nCBS обеспечивает выполнение транзакций (критическая система), отсутствие надлежащего механизма аутентификации может привести к совершению нелегитимных транзакций.\n",
+                  "mitigation": "1.2.2 ASVS\n[2] Взаимодействие между всеми компонентами приложения, включая API, промежуточное ПО и уровень хранения данных, должно быть аутентифицировано. Компоненты должны иметь минимально необходимые\nпривилегии. \nТакже централизованная система аутентификации с мониторингом и журналированием, и разделением на разные уровни аутентификации в зависимости от выполняемых областями функций.\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 22,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2111,12 +2460,31 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "3fc82879-8a9b-410f-b06f-55247e8a8a1e",
+                  "title": "[1][1] Отсутствие проверки цепочки доверия сертификаторов и подлинности сертификатов",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "CWE-295: Improper Certificate Validation\nФальшивый сертификат ЭДО, клиент примет подделку, если не проверяет цепочку доверия\nБез mTLS внутри сети злоумышленник может перехватить запросы на выполнение платежа, идущие к CBS\n",
+                  "mitigation": "1.9.2 ASVS\n[1] Компоненты приложения должны аутентифицировать каждую сторону\nвзаимодействия, чтобы предотвратить mitm атаки.\nНапример, компоненты должны проверять сертификаты и цепочки доверия TLS.\n\n9.2.1 ASVS\n[1] Для подключения к и от сервера используются доверенные сертификаты TLS. Сервер должен быть настроен так, чтобы доверять только утвержденным внутренним центрам сертификации. Все остальные должны отвергаться.\nТакже конфиденциальные данные, закрытые ключи и\nсертификаты должны безопасно храниться в Secure Element, TPM, TEE (Trusted\nExecution Environment) или быть защищены с помощью стойкой криптографии.\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Отправка платежей на обработку\nОбратно: статус выполнения"
@@ -2145,8 +2513,8 @@
                 "text": "Signature\nValidation"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2242,27 +2610,47 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "fa28f44b-d5ea-4940-8b8e-7fb5c64fc2af",
+                  "title": "[1] Ошибки в верификации цифровой подписи",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "CWE-347: Improper Verification of Cryptographic Signature\nВ случае отсутствия проверки подписи, использования слабых алгоритмов или отсутствия логов по статусу проверки подписи злоумышленник может подделать подпись, совершить платеж от юридического лица, отрицать свои действия, при этом не будет возможности убедиться в обратном.\n",
+                  "mitigation": "NIST 800-63 5.2.5\n[1] Защищенный канал аутентификации\n+\nЦентрализованный механизм логирования (https://top10proactive.owasp.org/the-top-10/c9-security-logging-and-monitoring/)\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
+                  "score": ""
+                },
+                {
+                  "id": "de7cfcde-8594-4dbb-b9f3-dbbaa65f500f",
+                  "title": "[2] Использование устаревших криптографических алгоритмов",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "+Repudiation\nCWE-327: Use of a Broken or Risky Cryptographic Algorithm\n",
+                  "mitigation": "2.9.3 ASVS\n[2] При создании и проверке должны использоваться утвержденные криптографические алгоритмы.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 24,
+                  "score": ""
+                }
+              ],
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 0,
+                "tampering": 2,
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -2323,11 +2711,13 @@
                 "text": "Payment DB"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2423,18 +2813,58 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": [],
+              "threats": [
+                {
+                  "id": "9c6ba625-b200-4efd-ab7f-ba4713807c10",
+                  "title": "[1] Хранение данных в незашифрованном виде",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "CWE-312: Cleartext Storage of Sensitive Information\nЗлоумышленник, получивший доступ к таблицам базы данных с платежами, может читать конфиденциальную информацию, хранящуюся в открытом виде (незашифрованную).\n",
+                  "mitigation": "6.1.3 ASVS\n[1] В зашифрованном виде должна храниться регулируемая законом финансовая информация (данные о банковских картах и счетах, о банкротстве, история платежей и т.д.)\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 25,
+                  "score": ""
+                },
+                {
+                  "id": "cc439ae8-dca0-44ad-bfff-74d5b96e6725",
+                  "title": "[1] Неправильная нейтрализация специальных элементов, используемых в SQL-запросах",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "+Information Disclosure\nCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')\nВнедрение SQL-инъекции через поля платежного поручения, что может привести к утечке/повреждению хранимых данных.\n\n",
+                  "mitigation": "5.3.4 ASVS\n[1] Запросы к базам данных (SQL, HQL, ORM, NoSQL и пр.) параметризованы посредством ORM, Entity Framework, или иным образом защищены от атак инъекции в базу данных\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 26,
+                  "score": ""
+                },
+                {
+                  "id": "a30f6499-fd77-424c-aeb6-2f86ba3ae581",
+                  "title": "[3] Угроза отказа в обслуживании",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "CWE-400: Uncontrolled Resource Consumption\nЗлоумышленник может отправить большой объем запросов к БД (например, файл с большим числом форм платежей), что может привести к отказу в обслуживании легальных платежей.\n",
+                  "mitigation": "12.1.1 ASVS\n[3] Лимиты запросов к БД (частота, объем запросов)\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 27,
+                  "score": ""
+                }
+              ],
               "threatFrequency": {
-                "tampering": 0,
+                "tampering": 2,
                 "repudiation": 0,
-                "informationDisclosure": 3,
-                "denialOfService": 1
+                "informationDisclosure": 4,
+                "denialOfService": 2
               }
             }
           }
@@ -2444,6 +2874,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Maria",
-    "threatTop": 5
+    "threatTop": 32
   }
 }
