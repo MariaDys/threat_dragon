@@ -362,8 +362,8 @@
                 "text": "Banking Web App"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -459,14 +459,41 @@
               "description": "Принимает запросы от клиента и обращается к внутренним сервисам",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "651220d6-f552-4d26-a33a-3fe6d2165b3e",
+                  "title": "[2] Захардкоженные секреты",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "CWE-798: Use of Hard-coded Credentials\nЕсли секреты захардкожены, и у злоумышленника будет доступ к исходному коду, он получит доступ и к ключам и подделает запросы к внутренним сервисам.\n",
+                  "mitigation": "6.4.1 ASVS\n[2] Для безопасного создания, хранения, контроля доступа и\nуничтожения секретов используется решение для управления секретами,\nнапример, key vault\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 41,
+                  "score": ""
+                },
+                {
+                  "id": "63a059ec-cfb5-40c1-aaca-23a35e362b2f",
+                  "title": "[3] Угроза CSRF",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "CWE-352: Cross-Site Request Forgery (CSRF)\nЗлоумышленник может создать страницу, которая отправляет платеж от имени авторизованного клиента, и без csrf-токена запрос выполнения платежа будет фактически отправлен от лица жертвы и исполнен.\n",
+                  "mitigation": "4.2.2 ASVS\n[3] Должен применяться надежный механизм защиты от CSRF-атак для неаутентифицированной зоны, а после аутентификации — защиты от автоматизированных атак и от CSRF (например, токены в формах платежей)\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 42,
+                  "score": ""
+                }
+              ],
               "threatFrequency": {
-                "spoofing": 0,
+                "spoofing": 2,
                 "tampering": 0,
                 "repudiation": 0,
                 "informationDisclosure": 0,
@@ -489,8 +516,8 @@
                 "text": "Payment \nHandler"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -586,12 +613,34 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "abbf138d-8482-4dde-b5eb-a3b5d7cdacc0",
+                  "title": "[3] Обход авторизации через идентификаторы",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "+ Repudation\nCWE-639: Authorization Bypass Through User-Controlled Key\n1. Злоумышленник отправляет запрос с чужим id, который доходит до payment handler'a, но в системе нет проверки принадлежности платежа пользователю, который его запрашивает и происходит обработка этого платежа.\n2. Аналогично, в архиве с формами может быть форма с чужим id платежа (другого юр лица)",
+                  "mitigation": "4.1.2 ASVS\n[3] Клиенты не могут манипулировать атрибутами пользователей и данных.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 33,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -608,8 +657,8 @@
                 "text": "Batch \nPayment \nHandler"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -705,12 +754,47 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "1f700367-5c26-4e40-b41f-cf983518f8ba",
+                  "title": "[3] Обход авторизации через идентификаторы",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "+Repudation\n1. Злоумышленник отправляет запрос с чужим id, который доходит до payment handler'a, но в системе нет проверки принадлежности платежа пользователю, который его запрашивает и происходит обработка этого платежа.\n2. Аналогично, в архиве с формами может быть форма с чужим id платежа (другого юр лица)\n",
+                  "mitigation": "4.1.2 ASVS\n[3] Клиенты не могут манипулировать атрибутами пользователей и данных.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 34,
+                  "score": ""
+                },
+                {
+                  "id": "4022981b-970e-4d96-9c98-95994b84cc47",
+                  "title": "[1] Отстуствие проверки типа файла",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "CWE-434: Unrestricted Upload of File with Dangerous Type\nЗлоумышленник может загрузить архив, замаскированный под легальный xlsx файл но с исполняемым скриптом\n",
+                  "mitigation": "12.2.1 ASVS\n[1] Должна быть проверка, что файлы, полученные из недоверенных источников,\nсоответствуют ожидаемому типу на основе содержимого файла (а не\nтолько его наименования).\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 35,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -1017,7 +1101,17 @@
                 "x": -420,
                 "y": -120
               }
-            ]
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           },
           {
             "shape": "flow",
@@ -1984,15 +2078,6 @@
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -2009,8 +2094,8 @@
                 "text": "API Gateway"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2106,17 +2191,65 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "ae77f9ce-ce64-4c7a-afd5-0695f81e8ba5",
+                  "title": "[1] Недостаточные проверки поступающих данных",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "CWE-345: Insufficient Verification of Data Authenticity\nЗлоумышленник может изменить данные платежного запроса (сумму, реквизиты получателя, подпись) при передаче между клиентом и API Gateway.\n",
+                  "mitigation": "13.2.6 ASVS\n[1] Проверять целостность заголовков и тела сообщения при передаче (также проверка формата и логики полей)\nИспользование стойкое шифрования при передаче (TLS 1.2/1.3).\nЭлектронные подписи для критичных операций (с большой суммой платежа)\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 36,
+                  "score": ""
+                },
+                {
+                  "id": "787b19ab-af7c-4da1-9049-a70e90eff92a",
+                  "title": "[1] Угроза отказа в обслуживании",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "СWE-400: Uncontrolled Resource Consumption\nОтправка большого числа запросов к API может привести к отказу в обслуживании легальных клиентов, нарушению работы платежной системы.\n",
+                  "mitigation": "12.1.1 ASVS\n[3] Балансировка нагрузки, Rate Limiters, ограничения на запросы (кол-во, объем)\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 37,
+                  "score": ""
+                },
+                {
+                  "id": "22300196-7a6c-4de1-91a3-0ff47a5dbd62",
+                  "title": "[2] Не контролируется доступ к критическим ресурсам",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "CWE-732: Incorrect Permission Assignment for Critical Resource\nНапример, подмена сумм платежей в формах, лежащих в БД, подмена логов в журнале событий\n",
+                  "mitigation": "4.3.3 ASVS\n[2]Применяются меры контроля доступа (например, двухшаговая или\nадаптивная аутентификация) для менее значимых систем и/или разделение\nполномочий для более критичных приложений.\n\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 38,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 2
+              }
             }
           },
           {
             "position": {
-              "x": -1110,
+              "x": -1100.0000000000007,
               "y": 735
             },
             "size": {
@@ -2282,6 +2415,19 @@
                   "new": false,
                   "number": 9,
                   "score": ""
+                },
+                {
+                  "id": "8287cdd1-a05c-4beb-9dce-3780108d587f",
+                  "title": "[2] Не контролируется доступ к критическим ресурсам",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "CWE-732: Incorrect Permission Assignment for Critical Resource\nНапример, подмена сумм платежей в формах, лежащих в БД, подмена логов в журнале событий\n",
+                  "mitigation": "4.3.3 ASVS\n[2]Применяются меры контроля доступа (например, двухшаговая или\nадаптивная аутентификация) для менее значимых систем и/или разделение\nполномочий для более критичных приложений.\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 40,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -2290,7 +2436,7 @@
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
-                "elevationOfPrivilege": 0
+                "elevationOfPrivilege": 1
               }
             }
           },
@@ -2423,6 +2569,19 @@
                   "new": false,
                   "number": 22,
                   "score": ""
+                },
+                {
+                  "id": "f447da25-9637-48ce-b0f7-575683cfd84b",
+                  "title": "[2] Не контролируется доступ к критическим ресурсам",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "CWE-732: Incorrect Permission Assignment for Critical Resource\nНапример, подмена сумм платежей в формах, лежащих в БД, подмена логов в журнале событий\n",
+                  "mitigation": "4.3.3 ASVS\n[2]Применяются меры контроля доступа (например, двухшаговая или\nадаптивная аутентификация) для менее значимых систем и/или разделение\nполномочий для более критичных приложений.\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 39,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -2431,7 +2590,7 @@
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
-                "elevationOfPrivilege": 0
+                "elevationOfPrivilege": 2
               }
             }
           },
@@ -2874,6 +3033,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Maria",
-    "threatTop": 32
+    "threatTop": 42
   }
 }
